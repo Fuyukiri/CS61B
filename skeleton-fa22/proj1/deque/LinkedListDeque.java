@@ -24,7 +24,7 @@ public class LinkedListDeque<T> {
         }
     }
 
-    private ListNode sentinel;
+    private final ListNode sentinel;
 
     private int size;
 
@@ -83,7 +83,7 @@ public class LinkedListDeque<T> {
      */
     public void printDeque() {
         ListNode head = sentinel.next;
-        while(head != sentinel) {
+        while (head != sentinel) {
             System.out.print(head.val + " ");
             head = head.next;
         }
@@ -92,6 +92,7 @@ public class LinkedListDeque<T> {
 
     /**
      * Removes and returns the item at the front of the deque.
+     *
      * @return If no such item exists, returns null.
      */
     public T removeFirst() {
@@ -110,7 +111,8 @@ public class LinkedListDeque<T> {
 
     /**
      * Removes the last item returns the item at the back of the deque.
-     * @return  If no such item exists, returns null
+     *
+     * @return If no such item exists, returns null
      */
     public T removeLast() {
         if (isEmpty()) {
@@ -137,5 +139,39 @@ public class LinkedListDeque<T> {
             i++;
         }
         return ret.val;
+    }
+
+    public T getRecursive(int index) {
+        if (index >= size) {
+            return null;
+        }
+        return getRecursive(index, 0, sentinel.next);
+    }
+
+    private T getRecursive(int index, int current, ListNode head) {
+        if (current == index) {
+            return head.val;
+        }
+        return getRecursive(index, current + 1, head.next);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof LinkedListDeque)) {
+            return false;
+        }
+        if (((LinkedListDeque<?>) o).size() != size()) {
+            return false;
+        }
+        ListNode head1 = sentinel.next;
+        LinkedListDeque<?>.ListNode head2 = ((LinkedListDeque<?>) o).sentinel.next;
+        for (int i = 0; i < size(); i++) {
+            if (head1 == null || head2 == null || head1.val != head2.val) {
+                return false;
+            }
+            head2 = head2.next;
+            head1 = head1.next;
+        }
+        return true;
     }
 }
