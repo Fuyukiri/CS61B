@@ -3,7 +3,7 @@ package deque;
 import edu.princeton.cs.algs4.StdRandom;
 import org.junit.Test;
 
-import java.util.LinkedList;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -190,5 +190,25 @@ public class LinkedListDequeTest {
 
         ll1.addFirst(10);
         assertEquals(ll1, ll2);
+    }
+
+    @Test
+    public void testIterator() {
+        LinkedListDeque<Integer> ll1 = new LinkedListDeque<>();
+        Iterator<Integer> lseer = ll1.iterator();
+        assertFalse(lseer.hasNext());
+
+        ll1.addLast(11);
+        ll1.addFirst(11);
+        while (lseer.hasNext()) {
+            assertEquals(Integer.valueOf(11), lseer.next());
+        }
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testIteratorException() {
+        LinkedListDeque<Integer> ll1 = new LinkedListDeque<>();
+        Iterator<Integer> lseer = ll1.iterator();
+        lseer.next();
     }
 }

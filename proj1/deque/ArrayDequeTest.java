@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Deque;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
 
@@ -185,6 +187,11 @@ public class ArrayDequeTest {
                     }
             }
         }
+        Iterator<Integer> expectedAdseer = expected.iterator();
+
+        for (Integer number : ad1) {
+            assertEquals(expectedAdseer.next(), number);
+        }
     }
 
     @Test
@@ -199,5 +206,41 @@ public class ArrayDequeTest {
 
         ad1.addFirst(10);
         assertEquals(ad1, ad2);
+    }
+
+    @Test
+    public void testIteratorSimple() {
+        Iterator<Integer> adseer = ad1.iterator();
+        assertFalse(adseer.hasNext());
+
+        ad1.addLast(11);
+        ad1.addFirst(11);
+        while (adseer.hasNext()) {
+            assertEquals(Integer.valueOf(11), adseer.next());
+        }
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testIteratorException() {
+        Iterator<Integer> adseer = ad1.iterator();
+        adseer.next();
+    }
+
+    @Test
+    public void randomIteratorTest() {
+        Deque<Integer> expected = new java.util.ArrayDeque<>();
+        int N = 114514;
+        int randVal;
+        for (int i = 0; i < N; i++) {
+            randVal = StdRandom.uniform(0, 100);
+            expected.addFirst(randVal);
+            ad1.addFirst(randVal);
+        }
+        Iterator<Integer> adseer = ad1.iterator();
+        Iterator<Integer> expectedAdseer = expected.iterator();
+
+        while (adseer.hasNext()) {
+            assertEquals(expectedAdseer.next(), adseer.next());
+        }
     }
 }
