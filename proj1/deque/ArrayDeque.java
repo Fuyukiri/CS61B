@@ -3,7 +3,7 @@ package deque;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ArrayDeque<T> implements Iterable<T>{
+public class ArrayDeque<T> implements Iterable<T>, Deque<T>{
     private T[] array;
     private int size;
     private int head;
@@ -16,6 +16,7 @@ public class ArrayDeque<T> implements Iterable<T>{
         head = 8; // current head, need move forward to be filled
     }
 
+    @Override
     public void addFirst(T item) {
         if (size < array.length) {
             if (head == 0) {
@@ -30,6 +31,7 @@ public class ArrayDeque<T> implements Iterable<T>{
         }
     }
 
+    @Override
     public void addLast(T item) {
         resize();
         if (tail == array.length) {
@@ -41,6 +43,7 @@ public class ArrayDeque<T> implements Iterable<T>{
 
     }
 
+    @Override
     public T removeFirst() {
         if (isEmpty()) {
             return null;
@@ -57,6 +60,7 @@ public class ArrayDeque<T> implements Iterable<T>{
         return ret;
     }
 
+    @Override
     public T removeLast() {
         if (isEmpty()) {
             return null;
@@ -105,14 +109,12 @@ public class ArrayDeque<T> implements Iterable<T>{
         }
     }
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public void printDeque() {
         for (int i = 0; i < size; i++) {
             System.out.print(get(i) + " ");
@@ -122,20 +124,21 @@ public class ArrayDeque<T> implements Iterable<T>{
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof ArrayDeque)) {
+        if (!(o instanceof Deque<?>)) {
             return false;
         }
-        if (((ArrayDeque<?>) o).size() != size()) {
+        if (((Deque<?>) o).size() != size()) {
             return false;
         }
         for (int i = 0; i < size(); i++) {
-            if (((ArrayDeque<?>) o).get(i) != get(i)) {
+            if (((Deque<?>) o).get(i) != get(i)) {
                 return false;
             }
         }
         return true;
     }
 
+    @Override
     public T get(int index) {
         if (isEmpty() || index >= size) {
             return null;

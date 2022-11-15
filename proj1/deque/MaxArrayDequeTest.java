@@ -5,19 +5,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.*;
-import java.util.ArrayDeque;
 
 import static org.junit.Assert.assertEquals;
 
 public class MaxArrayDequeTest {
     private MaxArrayDeque<Integer> maxArrayDeque;
-    private Deque<Integer> expected;
+    private java.util.Deque<Integer> expected;
 
     @Before
     public void setup() {
         // By default, use natural order to compare
         maxArrayDeque = new MaxArrayDeque<>(Integer::compareTo);
-        expected = new ArrayDeque<>();
+        expected = new java.util.ArrayDeque<>();
     }
 
     @Test

@@ -3,7 +3,7 @@ package deque;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedListDeque<T> implements Iterable<T> {
+public class LinkedListDeque<T> implements Iterable<T>, Deque<T> {
     private class ListNode {
         private T val;
         private ListNode next;
@@ -20,11 +20,6 @@ public class LinkedListDeque<T> implements Iterable<T> {
             prev = null;
         }
 
-        ListNode(T val, ListNode next) {
-            this.val = val;
-            this.next = next;
-            next.prev = this;
-        }
     }
 
     private final ListNode sentinel;
@@ -36,6 +31,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
         size = 0;
     }
 
+    @Override
     public void addFirst(T item) {
         // DLL is empty
         ListNode newHead = new ListNode(item);
@@ -52,6 +48,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
         size++;
     }
 
+    @Override
     public void addLast(T item) {
         if (isEmpty()) {
             addFirst(item);
@@ -67,15 +64,9 @@ public class LinkedListDeque<T> implements Iterable<T> {
     }
 
     /**
-     * @return Returns true if deque is empty, false otherwise.
-     */
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    /**
      * @return Returns the number of items in the deque.
      */
+    @Override
     public int size() {
         return size;
     }
@@ -84,6 +75,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      * Prints the items in the deque from first to last, separated by a space.
      * Once all the items have been printed, print out a new line.
      */
+    @Override
     public void printDeque() {
         ListNode head = sentinel.next;
         while (head != sentinel) {
@@ -98,6 +90,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      *
      * @return If no such item exists, returns null.
      */
+    @Override
     public T removeFirst() {
         if (isEmpty()) {
             return null;
@@ -117,6 +110,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
      *
      * @return If no such item exists, returns null
      */
+    @Override
     public T removeLast() {
         if (isEmpty()) {
             return null;
@@ -131,6 +125,7 @@ public class LinkedListDeque<T> implements Iterable<T> {
         return ret.val;
     }
 
+    @Override
     public T get(int index) {
         if (index >= size) {
             return null;
@@ -160,20 +155,16 @@ public class LinkedListDeque<T> implements Iterable<T> {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof LinkedListDeque)) {
+        if (!(o instanceof Deque<?>)) {
             return false;
         }
-        if (((LinkedListDeque<?>) o).size() != size()) {
+        if (((Deque<?>) o).size() != size()) {
             return false;
         }
-        ListNode head1 = sentinel.next;
-        LinkedListDeque<?>.ListNode head2 = ((LinkedListDeque<?>) o).sentinel.next;
         for (int i = 0; i < size(); i++) {
-            if (head1 == null || head2 == null || head1.val != head2.val) {
+            if (!((Deque<?>) o).get(i).equals(this.get(i))) {
                 return false;
             }
-            head2 = head2.next;
-            head1 = head1.next;
         }
         return true;
     }

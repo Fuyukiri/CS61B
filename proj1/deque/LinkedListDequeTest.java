@@ -211,4 +211,19 @@ public class LinkedListDequeTest {
         Iterator<Integer> lseer = ll1.iterator();
         lseer.next();
     }
+
+    @Test
+    public void compareWithArrayDeque() {
+        ArrayDeque<Integer> arrayDeque = new ArrayDeque<>();
+        LinkedListDeque<Integer> linkedListDeque = new LinkedListDeque<>();
+        for (int i = 0; i < 514; i++) {
+            int randVal = StdRandom.uniform(0, 100);
+            arrayDeque.addFirst(randVal);
+            linkedListDeque.addFirst(randVal);
+            randVal = StdRandom.uniform(0, 100);
+            arrayDeque.addLast(randVal);
+            linkedListDeque.addLast(randVal);
+        }
+        assertEquals(arrayDeque, linkedListDeque);
+    }
 }
