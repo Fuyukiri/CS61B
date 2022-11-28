@@ -7,8 +7,8 @@ import edu.princeton.cs.algs4.Stopwatch;
 
 public class PercolationStatsTest {
 
-    private static int N = 100;
-    private static int T = 300;
+    private static int N = 10;
+    private static int T = 100;
     @Test
     public void testPercolationStats() {
         timeCheck(N, T);
@@ -26,5 +26,9 @@ public class PercolationStatsTest {
         double time = stopwatch.elapsedTime();
         System.out.println("N: " + N + " T: " + T);
         System.out.println("Time: " + time);
+        System.out.println("mean: " + percolationStats.mean());
+        System.out.println("stddev: " + percolationStats.stddev());
+        System.out.println("confidenceLow: " + percolationStats.confidenceLow());
+        System.out.println("confidenceHigh: " + percolationStats.confidenceHigh());
     }
 }
