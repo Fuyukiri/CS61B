@@ -20,6 +20,7 @@ public class TestNGramMap {
                 (Arrays.asList(646179.0, 677820.0, 697645.0, 795265.0));
 
         TimeSeries request2005to2008 = ngm.countHistory("request");
+        System.out.println(request2005to2008);
         assertEquals(expectedYears, request2005to2008.years());
 
         for (int i = 0; i < expectedCounts.size(); i += 1) {

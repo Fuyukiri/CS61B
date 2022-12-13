@@ -1,6 +1,5 @@
 package hw2;
 
-import java.util.Arrays;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
 
