@@ -1,5 +1,5 @@
 # CS61B
-This is course from University of California, Berkeley CS61C FALL 2022
+This is course from University of California, Berkeley CS61B FALL 2022
 
 # Course info
 Course link: https://fa22.datastructur.es/
