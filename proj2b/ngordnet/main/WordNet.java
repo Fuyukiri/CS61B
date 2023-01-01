@@ -2,10 +2,7 @@ package ngordnet.main;
 
 import edu.princeton.cs.algs4.In;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class WordNet {
     Graph graph;
@@ -32,7 +29,17 @@ public class WordNet {
         }
     }
 
-
+    public List<String> getHyponym(List<String> words) {
+        List<List<String>> listOfSet = new ArrayList<>();
+        for (var word : words) {
+            listOfSet.add(getHyponym(word.trim()));
+        }
+        var res = new ArrayList<>(listOfSet.get(0));
+        for (var list : listOfSet) {
+            res.retainAll(list);
+        }
+        return res;
+    }
 
     public List<String> getHyponym(String word) {
         var idList = graph.getIdList(word);
