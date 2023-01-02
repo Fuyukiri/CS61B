@@ -14,13 +14,19 @@ public class HyponymsHandler extends NgordnetQueryHandler {
     @Override
     public String handle(NgordnetQuery q) {
         var wordList = q.words();
-
-//        var wordList = word.split(",");
+        var k = q.k();
+        var startYear = q.startYear();
+        var endYear = q.endYear();
         List<String> ret;
-        if (wordList.size() == 1) {
+
+        if (wordList.size() == 1 && k == 0) {
             ret = wn.getHyponym(wordList.get(0));
-        } else {
+        } else if (wordList.size() > 1 && k == 0) {
             ret = wn.getHyponym(wordList);
+        } else if (wordList.size() == 1 && k != 0) {
+            ret = wn.getHyponym(wordList.get(0), k, startYear, endYear);
+        } else {
+            ret = wn.getHyponym(wordList, k, startYear, endYear);
         }
 
         return ret.toString();

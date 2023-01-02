@@ -2,7 +2,6 @@ package ngordnet.proj2b_testing;
 
 import ngordnet.hugbrowsermagic.NgordnetQuery;
 import ngordnet.hugbrowsermagic.NgordnetQueryHandler;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
