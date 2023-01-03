@@ -37,7 +37,7 @@ There is only one homework we can access it.
 |[project 0](https://fa22.datastructur.es/materials/proj/proj0/) |2048| ✅|
 |[project 1](https://fa22.datastructur.es/materials/proj/proj1/) |Deques| ✅|
 |[project 2a](https://fa22.datastructur.es/materials/proj/proj2a/) |NGordnet (NGrams)| ✅|
-|[project 2b](https://fa22.datastructur.es/materials/proj/proj2b/) |NGordnet (Wordnet)|⏳|
+|[project 2b](https://fa22.datastructur.es/materials/proj/proj2b/) |NGordnet (Wordnet)|✅|
 |[project 4](https://fa22.datastructur.es/materials/proj/proj3/) |BYOW|⏳|
 
 ---
