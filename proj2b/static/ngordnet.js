@@ -8,6 +8,7 @@ $(function() {
     const history_server = host + '/history';
     const historytext_server = host + '/historytext';
     const hyponyms_server = host + '/hyponyms';
+    const hypohist_server = host + '/hypohist';
 
     function get_params() {
         return {
@@ -21,6 +22,7 @@ $(function() {
     $('#history').click(historyButton);
     $('#historytext').click(historyTextButton);
     $('#hyponyms').click(hyponymsButton);
+    $('#hypohist').click(hypohistButton);
 
     function historyButton() {
         $("#textresult").hide();
@@ -97,4 +99,28 @@ $(function() {
         });
     }
 
+    function hypohistButton() {
+        console.log("hypohist call");
+        $("#textresult").hide();
+        $("#plot").show();
+
+        var params = get_params();
+        console.log(params);
+        $.get({
+            async: false,
+            url: hypohist_server,
+            data: params,
+            success: function(data) {
+                console.log(data)
+                plot.src = 'data:image/png;base64,' + data;
+
+            },
+            error: function(data) {
+                console.log("error")
+                console.log(data);
+                plot.src = 'data:image/png;base64,' + data;
+            },
+            dataType: 'json'
+        });
+    }
 });
