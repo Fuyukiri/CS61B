@@ -27,7 +27,7 @@ There is only one homework we can access it.
 |[lab 6](https://fa22.datastructur.es/materials/lab/lab06/) |Peer Code Review|✅|
 |[lab 7](https://fa22.datastructur.es/materials/lab/lab07/) |BSTMap|✅|
 |[lab 8](https://fa22.datastructur.es/materials/lab/lab08/) |HashMap|✅|
-|[lab 11](https://fa22.datastructur.es/materials/lab/lab11/) |BYOW Introduction|⏳|
+|[lab 11](https://fa22.datastructur.es/materials/lab/lab11/) |BYOW Introduction|✅|
 |[lab 12](https://fa22.datastructur.es/materials/lab/lab12/) |Getting Started on Project 3, Phase 2|⏳|
 
 ---
@@ -38,7 +38,7 @@ There is only one homework we can access it.
 |[project 1](https://fa22.datastructur.es/materials/proj/proj1/) |Deques| ✅|
 |[project 2a](https://fa22.datastructur.es/materials/proj/proj2a/) |NGordnet (NGrams)| ✅|
 |[project 2b](https://fa22.datastructur.es/materials/proj/proj2b/) |NGordnet (Wordnet)|✅|
-|[project 4](https://fa22.datastructur.es/materials/proj/proj3/) |BYOW|⏳|
+|[project 3](https://fa22.datastructur.es/materials/proj/proj3/) |BYOW|⏳|
 
 ---
 ## Homework
